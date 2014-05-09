@@ -664,12 +664,16 @@ private:
 #ifdef HTC_3D_SUPPORT
         usage |= GRALLOC_USAGE_PRIVATE_0;
 #endif
+#ifdef STE_HARDWARE
+         usage |= GRALLOC_USAGE_PRIVATE_0;
+#endif
         ANativeWindow *a = anw(w);
         return native_window_set_usage(a, usage);
     }
 
     static int __set_swap_interval(struct preview_stream_ops *w, int interval)
     {
+
         ANativeWindow *a = anw(w);
         return a->setSwapInterval(a, interval);
     }
